@@ -20,7 +20,7 @@ public class Image {
    @Column(name="link")
    private String link;
 
-   @Column(name="image_data")
+   @Column(name="image_data", columnDefinition = "LONGTEXT")
    @Lob
    private String imageData;
 

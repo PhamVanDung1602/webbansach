@@ -16,7 +16,7 @@ import org.springframework.web.servlet.config.annotation.CorsRegistry;
 public class MethodRestConfig implements RepositoryRestConfigurer {
     @Autowired
     private EntityManager entityManager;
-    private String url ="http://localhost:8080";
+    private String url ="http://localhost:3000";
 
     public void configureRepositoryRestConfiguration(RepositoryRestConfiguration config, CorsRegistry cors) {
         //expose ids
@@ -27,6 +27,11 @@ public class MethodRestConfig implements RepositoryRestConfigurer {
                         .toArray(Class[]::new)
         );
         //config.exposeIdsFor(BookGenre.class);
+
+        //CORS Configuration
+        cors.addMapping("/**")
+                .allowedOrigins(url)
+                .allowedMethods("GET","POST","PUT","DELETE");
 
         //disable methods
         HttpMethod[] disableMethods = {
