@@ -1,14 +1,14 @@
 import React from "react";
 import Banner from "./components/Banner";
 import Carousel from "./components/Carousel";
-import List from "../products/List";
+import ProductList from "../products/ProductList";
 
 function HomePage(){
     return (
         <div>
             <Banner />
             <Carousel />
-            <List />
+            <ProductList />
         </div>
     );
 }
