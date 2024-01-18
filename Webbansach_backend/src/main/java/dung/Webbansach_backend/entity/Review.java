@@ -5,11 +5,11 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name="rating")
-public class Rating {
+@Table(name="review")
+public class Review {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="rating_id")
+    @Column(name="review_id")
     private long ratingID;
 
     @Column(name ="comment", columnDefinition = "text")

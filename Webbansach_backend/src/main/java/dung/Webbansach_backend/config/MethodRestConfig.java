@@ -34,17 +34,17 @@ public class MethodRestConfig implements RepositoryRestConfigurer {
                 .allowedMethods("GET","POST","PUT","DELETE");
 
         //disable methods
-        HttpMethod[] disableMethods = {
-                HttpMethod.PUT,
-                HttpMethod.PATCH,
-                HttpMethod.DELETE,
-                HttpMethod.POST
-        };
-//        disableHttpMethods(BookGenre.class, config, disableMethods);
-//
-//        //disable method DELETE
-//        HttpMethod[] deleteMethod ={ HttpMethod.DELETE};
-//        disableHttpMethods(User.class,config,deleteMethod);
+//        HttpMethod[] disableMethods = {
+//                HttpMethod.PUT,
+//                HttpMethod.PATCH,
+//                HttpMethod.DELETE,
+//                HttpMethod.POST
+//        };
+////        disableHttpMethods(BookGenre.class, config, disableMethods);
+////
+////        //disable method DELETE
+////        HttpMethod[] deleteMethod ={ HttpMethod.DELETE};
+////        disableHttpMethods(User.class,config,deleteMethod);
 
 
     }

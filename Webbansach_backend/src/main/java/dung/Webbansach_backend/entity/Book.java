@@ -26,8 +26,8 @@ public class Book {
     @Column(name="description", columnDefinition = "text")
     private String description;
 
-    @Column(name="listed_price")
-    private double listedPrice;
+    @Column(name="original_price")
+    private double originalPrice;
 
     @Column(name="price")
     private double price;
@@ -69,7 +69,7 @@ public class Book {
             fetch = FetchType.LAZY,
             cascade = CascadeType.ALL
     )
-    private List<Rating> rating;
+    private List<Review> reviewList;
 
     @OneToMany(mappedBy = "book",
             fetch = FetchType.LAZY,

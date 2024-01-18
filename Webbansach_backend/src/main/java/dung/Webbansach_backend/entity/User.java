@@ -3,7 +3,6 @@ package dung.Webbansach_backend.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
-import java.sql.Date;
 import java.util.List;
 
 @Data
@@ -15,17 +14,15 @@ public class User {
     @Column(name="user_id")
     private int userID;
 
-    @Column(name="last_name",length = 256)
-    private String lastName;
-
-    @Column(name="first_name",length = 256)
-    private String firstName;
+    @Column(name="full_name",length = 512)
+    private String fullName;
 
     @Column(name="gender")
-    private char gender;
+    private String gender;
 
-    @Column(name="birth_date")
-    private Date birthDate;
+    @Column(name="birth_day")
+    @Embedded
+    private BirthDay birthDay;
 
     @Column(name="username",length = 256)
     private String username;
@@ -51,7 +48,7 @@ public class User {
                     CascadeType.PERSIST,CascadeType.DETACH,CascadeType.MERGE,CascadeType.REFRESH
             }
     )
-    private List<Rating> rating;
+    private List<Review> reviewList;
 
     @ManyToMany(fetch = FetchType.LAZY, cascade = {
             CascadeType.PERSIST,CascadeType.DETACH,CascadeType.MERGE,CascadeType.REFRESH
