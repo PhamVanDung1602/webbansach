@@ -21,7 +21,7 @@ public class AccountController {
         int month = Integer.parseInt(user.getBirthDay().getMonth());
 
         if (month >= 1 && month <= 9) {
-            user.getBirthDay().setMonth("0"+user.getBirthDay().getDay());
+            user.getBirthDay().setMonth("0"+user.getBirthDay().getMonth());
         }
 
 

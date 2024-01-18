@@ -3,6 +3,7 @@ package dung.Webbansach_backend.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.Collection;
 import java.util.List;
 
 @Data
@@ -50,7 +51,7 @@ public class User {
     )
     private List<Review> reviewList;
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = {
+    @ManyToMany(fetch = FetchType.EAGER, cascade = {
             CascadeType.PERSIST,CascadeType.DETACH,CascadeType.MERGE,CascadeType.REFRESH
     })
     @JoinTable(name ="user_role",
@@ -85,6 +86,5 @@ public class User {
             }
     )
     private List<FavoriteBook> favoriteBookList;
-
 
 }

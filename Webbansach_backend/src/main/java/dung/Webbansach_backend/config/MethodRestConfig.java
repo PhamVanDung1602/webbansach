@@ -29,9 +29,9 @@ public class MethodRestConfig implements RepositoryRestConfigurer {
         //config.exposeIdsFor(BookGenre.class);
 
         //CORS Configuration
-        cors.addMapping("/**")
-                .allowedOrigins(url)
-                .allowedMethods("GET","POST","PUT","DELETE");
+//        cors.addMapping("/**")
+//                .allowedOrigins(url)
+//                .allowedMethods("GET","POST","PUT","DELETE");
 
         //disable methods
 //        HttpMethod[] disableMethods = {
