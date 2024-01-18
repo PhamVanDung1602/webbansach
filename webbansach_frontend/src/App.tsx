@@ -7,6 +7,7 @@ import HomePage from './layouts/homepage/HomePage';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import About from './layouts/about/About';
 import ProductDetail from './layouts/products/ProductDetail';
+import RegisterNewUser from './layouts/user/RegisterNewUser';
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
              <Route path='/:genreID' element={<HomePage keyword={keyword} />} />
              <Route path='/book/:bookID' element={<ProductDetail />} />
              <Route path='/about' element={<About />} />
+             <Route path='/register' element={<RegisterNewUser />} />
         </Routes>
         <Footer />
       </BrowserRouter>
