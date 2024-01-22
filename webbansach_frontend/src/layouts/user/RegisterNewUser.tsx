@@ -12,11 +12,22 @@ function RegisterNewUser() {
     const [phoneNumber, setPhoneNumber] = useState("");
     const [repeatedPassword, setRepeatedPassword] = useState("");
     const [notification, setNotification] = useState("");
+    const [avatar, setAvatar] = useState<File|null>(null);
     //error message variable
     const [errorUsername, setErrorUsername] = useState("");
     const [errorEmail, setErrorEmail] = useState("");
     const [errorPassword, setErrorPassword] = useState("");
     const [errorRepeatedPassword, setErrorRepeatedPassword] = useState("");
+
+    // Convert file to Base64
+    const getBase64 = (file: File): Promise<string | null> => {
+        return new Promise((resolve, reject) => {
+            const reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onload = () => resolve(reader.result ? (reader.result as string) : null);
+            reader.onerror = (error) => reject(error);
+        });
+    };
 
     //handle login infomation
     const handleSubmit = async (e: React.FormEvent) => {
@@ -35,7 +46,12 @@ function RegisterNewUser() {
         const isPasswordValid = !await handleUsernameExisted(password);
         const isRepeatedPasswordValid = !await handleUsernameExisted(repeatedPassword);
 
+        //check all conditions
         if (isUserNameValid && isEmailValid && isPasswordValid && isRepeatedPasswordValid) {
+
+            const base64Avatar = avatar ? await getBase64(avatar) : null;
+            console.log("avatar: " + base64Avatar);
+
             try {
                 const url = "http://localhost:8080/account/register";
                 const response = await fetch(url, {
@@ -54,7 +70,8 @@ function RegisterNewUser() {
                             day: day,
                             month: month,
                             year: year
-                        }
+                        },
+                        avatar: base64Avatar
                     }
                     )
                 })
@@ -185,6 +202,13 @@ function RegisterNewUser() {
     }
     //------------------------------------------------------------------------------------------
 
+    //HANDLE AVATAR--------------------------------------------------------------------
+    const handleAvatarChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        if(e.target.files){
+            const file = e.target.files[0];
+            setAvatar(file);
+        }
+    }
     return (
         <div className="container">
             <h1 className="mt-5 text-center">Đăng ký</h1>
@@ -298,6 +322,17 @@ function RegisterNewUser() {
                             onChange={handleEmailChange}
                         />
                         <div className="d-flex" style={{ color: "red" }}>{errorEmail}</div>
+                    </div>
+
+                    <div className="mb-3">
+                        <label htmlFor="avatar" className="form-label d-flex"><strong>Ảnh đại diện:</strong></label>
+                        <input
+                            type="file"
+                            id="avatar"
+                            className="form-control"
+                            accept="image/"
+                            onChange={handleAvatarChange}
+                        />
                     </div>
 
                     <div className="text-center">
