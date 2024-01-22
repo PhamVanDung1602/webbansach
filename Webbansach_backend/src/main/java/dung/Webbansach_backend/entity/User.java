@@ -34,6 +34,12 @@ public class User {
     @Column(name="email")
     private String email;
 
+    @Column(name="activated")
+    private boolean activated;
+
+    @Column(name="activation_code")
+    private String activationCode;
+
     @Column(name="phone_number")
     private String phoneNumber;
 
@@ -42,6 +48,10 @@ public class User {
 
     @Column(name="delivery_address")
     private String deliveryAddress;
+
+    @Lob
+    @Column(name="avatar", columnDefinition = "LONGTEXT" )
+    private String avatar;
 
     @OneToMany(mappedBy = "user",
             fetch = FetchType.LAZY,

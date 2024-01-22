@@ -8,15 +8,20 @@ public class Endpoints {
             "/image",
             "/image/**",
             "user/search/existsByEmail",
-            "user/search/existsByUsername"
+            "user/search/existsByUsername",
+            "/account/activate"
     };
 
     public static final String[] PUBLIC_POST_ENDPOINTS = {
-            "/account/register"
+            "/account/register",
+            "/account/login"
     };
 
     public static final String[] ADMIN_GET_ENDPOINTS = {
            "/user",
             "/user/**"
+    };
+    public static final String[] ADMIN_POST_ENDPOINTS = {
+            "/book"
     };
 }
